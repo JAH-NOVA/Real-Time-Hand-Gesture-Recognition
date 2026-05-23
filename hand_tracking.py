@@ -4,7 +4,6 @@ import math
 
 # MediaPipe setup
 mp_hands = mp.solutions.hands
-#hands = mp_hands.Hands(max_num_hands=2, min_detection_confidence=0.7)
 hands = mp_hands.Hands(
     max_num_hands=2,
     min_detection_confidence=0.7,
@@ -65,41 +64,40 @@ while True:
             # Gesture detection
             if dist < 0.05 and middle and ring and pinky:
                 gestures.append(f"{hand_label}: OK")
-                #gesture = "OK"
+                 
 
             elif thumb and index and not middle and not ring and pinky:
-                gestures.append(f"{hand_label}: LOVE")  #gesture = "LOVE"
+                gestures.append(f"{hand_label}: LOVE")   
 
             elif all_folded and thumb_length > 0.55 and lm[4].y < lm[3].y < lm[2].y:
-                gestures.append(f"{hand_label}: YES")   #gesture = "YES"
+                gestures.append(f"{hand_label}: YES")   
 
             elif all_folded and thumb_length > 0.55 and lm[4].y > lm[3].y > lm[2].y:
-                gestures.append(f"{hand_label}: BAD")    #gesture = "BAD"
+                gestures.append(f"{hand_label}: BAD")     
 
             elif all_folded:
-                gestures.append(f"{hand_label}: FIST")     #gesture = "FIST"
+                gestures.append(f"{hand_label}: FIST")      
 
             elif thumb and index and middle and ring and pinky:
-                gestures.append(f"{hand_label}: HELLO")     #gesture = "HELLO"
+                gestures.append(f"{hand_label}: HELLO")     
 
             elif not thumb and index and middle and ring and pinky:
-                gestures.append(f"{hand_label}: FOUR")   #gesture = "FOUR"
+                gestures.append(f"{hand_label}: FOUR")   
 
             elif not thumb and index and middle and ring and not pinky:
-                gestures.append(f"{hand_label}: THREE")   #gesture = "THREE"
+                gestures.append(f"{hand_label}: THREE")    
 
             elif not thumb and index and middle and not ring and not pinky:
-                gestures.append(f"{hand_label}: TWO")    #gesture = "TWO"
+                gestures.append(f"{hand_label}: TWO")     
 
             elif not thumb and index and not middle and not ring and not pinky:
-                gestures.append(f"{hand_label}: NO")   #gesture = "NO"
+                gestures.append(f"{hand_label}: NO")   
 
             else:
-                gestures.append(f"{hand_label}: UNKNOWN")#gesture = "UNKNOWN"
+                gestures.append(f"{hand_label}: UNKNOWN") 
 
             # Show left/right hand
-            #cv2.putText(frame, f"Hand: {hand_label}", (20, 40),
-                        #cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+             
             h, w, c = frame.shape
 
             x = int(lm[0].x * w)
@@ -114,9 +112,8 @@ while True:
                         2)
 
     # Show detected gesture
-    #cv2.putText(frame, f"Gesture: {gesture}", (20, 80),
-                #cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 255, 0), 3)
-        # Show detected gestures
+     
+         
     y = 80
     for g in gestures:
         cv2.putText(frame, g, (20, y),
