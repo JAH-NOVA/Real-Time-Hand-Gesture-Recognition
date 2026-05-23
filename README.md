@@ -23,9 +23,9 @@ A real-time hand gesture and sign language recognition system developed using Py
 
 ## How to Run
 
- 1.pip install opencv-python mediapipe numpy
- 2.python hand_tracking.py
- 3.🎥 Expected Output
+ 1.pip install opencv-python mediapipe numpy   
+ 2.python hand_tracking.py     
+ 3.🎥 Expected Output     
 
 👉 Camera opens
 👉 Hands tracking starts
